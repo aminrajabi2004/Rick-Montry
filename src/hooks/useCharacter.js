@@ -13,7 +13,7 @@ export default function useCharacters(url, query) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`${url}=${query}`, { signal });
-        setCharacters(data.results.slice(0, 5));
+        setCharacters(data.results);
       } catch (err) {
         // fetch => err.name ==="AbortError"
         // axios => axios.isCancel()
@@ -38,5 +38,5 @@ export default function useCharacters(url, query) {
     };
   }, [query]);
 
-  return { isLoading, characters};
+  return { isLoading, characters };
 }
